@@ -1,0 +1,14 @@
+# Bash Day 1 — Basic Commands Practiced
+
+mkdir practice
+cd practice
+touch file1.txt
+touch file2.txt
+echo "My first Linux practice file" > file1.txt
+cp file1.txt file1-copy.txt
+mv file2.txt renamed-file.txt
+ls
+ls -l
+cat file1.txt
+pwd
+cd ..

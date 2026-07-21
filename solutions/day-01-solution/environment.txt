@@ -1,0 +1,20 @@
+LINUX ENVIRONMENT INFORMATION
+=============================
+
+SAMPLE SOLUTION
+Run the assignment commands on your own machine and replace these examples.
+
+Current user:
+khalid
+
+Hostname:
+Khalid-laptop
+
+Current directory:
+/home/khalid/nit/shell-scripting/day-01
+
+Login shell:
+/bin/bash
+
+Kernel:
+Run uname -r on your machine and paste the result here.
