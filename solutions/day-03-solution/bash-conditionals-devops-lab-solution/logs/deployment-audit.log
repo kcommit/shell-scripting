@@ -1,0 +1,6 @@
+2026-07-22 01:18:08 | User=root | Application=inventory-api | Environment=dev | Ticket=NONE | Artifact=artifacts/inventory-api-v1.0.0.tar.gz | CPU=45 | Disk=60 | Status=SUCCESS
+2026-07-22 01:18:09 | User=root | Application=inventory-api | Environment=prod | Ticket=CHG-2026-1001 | Artifact=artifacts/inventory-api-v1.0.0.tar.gz | CPU=40 | Disk=55 | Status=SUCCESS
+2026-07-22 01:18:17 | User=root | Application=inventory-api | Environment=prod | Ticket=NONE | Artifact=artifacts/inventory-api-v1.0.0.tar.gz | CPU=45 | Disk=60 | Status=FAILED_READINESS
+2026-07-22 01:18:17 | User=root | Application=inventory-api | Environment=dev | Ticket=NONE | Artifact=artifacts/inventory-api-v1.0.0.tar.gz | CPU=95 | Disk=60 | Status=FAILED_READINESS
+2026-07-22 01:18:17 | User=root | Application=inventory-api | Environment=dev | Ticket=NONE | Artifact=artifacts/inventory-api-v1.0.0.tar.gz | CPU=45 | Disk= | Status=FAILED_ARGUMENT_COUNT
+2026-07-22 01:18:17 | User=root | Application=inventory-api | Environment=test | Ticket=NONE | Artifact=artifacts/missing.tar.gz | CPU=45 | Disk=60 | Status=FAILED_READINESS

@@ -1,0 +1,12 @@
+scenario,application,environment,ticket,artifact,cpu,disk,expected_result
+healthy-development,inventory-api,dev,NONE,artifacts/inventory-api-v1.0.0.tar.gz,45,60,SUCCESS
+healthy-testing,inventory-api,test,NONE,artifacts/inventory-api-v1.0.0.tar.gz,35,50,SUCCESS
+approved-production,inventory-api,prod,CHG-2026-1001,artifacts/inventory-api-v1.0.0.tar.gz,40,55,SUCCESS
+resource-warning,inventory-api,dev,NONE,artifacts/inventory-api-v1.0.0.tar.gz,75,55,FAILED_READINESS
+resource-critical,inventory-api,dev,NONE,artifacts/inventory-api-v1.0.0.tar.gz,95,60,FAILED_READINESS
+production-ticket-missing,inventory-api,prod,NONE,artifacts/inventory-api-v1.0.0.tar.gz,45,60,FAILED_READINESS
+production-ticket-invalid,inventory-api,prod,TICKET-1001,artifacts/inventory-api-v1.0.0.tar.gz,45,60,FAILED_READINESS
+invalid-environment,inventory-api,classroom,CHG-2026-1001,artifacts/inventory-api-v1.0.0.tar.gz,45,60,FAILED_READINESS
+missing-artifact,inventory-api,test,NONE,artifacts/missing.tar.gz,45,60,FAILED_READINESS
+wrong-extension,inventory-api,dev,NONE,artifacts/release.txt,45,60,FAILED_READINESS
+

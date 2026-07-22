@@ -1,0 +1,25 @@
+# Successful development workflow
+./06-deployment-runner.sh inventory-api dev v1.0.0 artifacts/inventory-api.txt
+
+# Successful testing workflow
+./06-deployment-runner.sh payments-api test v3.0.0 artifacts/payments-api.txt
+
+# Successful production workflow
+./06-deployment-runner.sh customer-portal prod v2.1.0 artifacts/customer-portal.txt
+
+# Quoted application-name argument
+./01-argument-inspector.sh "customer portal" test v2.1.0 artifacts/customer-portal.txt
+
+# Invalid environment
+./06-deployment-runner.sh inventory-api classroom v1.0.0 artifacts/inventory-api.txt
+
+# Missing artifact
+./06-deployment-runner.sh inventory-api test v1.0.1 artifacts/missing.txt
+
+# Missing fourth argument
+./06-deployment-runner.sh inventory-api dev v1.0.0
+
+# Create and test an empty artifact
+touch artifacts/empty.txt
+./06-deployment-runner.sh inventory-api dev v1.0.1 artifacts/empty.txt
+

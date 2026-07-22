@@ -1,0 +1,7 @@
+Application: Inventory API
+Release: v1.0.0
+Owner: Platform Engineering
+Purpose: Sample deployment artifact for the Bash conditionals lab
+Health endpoint: /health
+Expected health status: 200
+

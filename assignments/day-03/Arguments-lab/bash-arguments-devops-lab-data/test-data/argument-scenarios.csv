@@ -1,0 +1,10 @@
+scenario,application,environment,version,artifact,expected_result
+inventory-development,inventory-api,dev,v1.0.0,artifacts/inventory-api.txt,SUCCESS
+payments-testing,payments-api,test,v3.0.0,artifacts/payments-api.txt,SUCCESS
+portal-production,customer-portal,prod,v2.1.0,artifacts/customer-portal.txt,SUCCESS
+quoted-application-name,"customer portal",test,v2.1.0,artifacts/customer-portal.txt,SUCCESS
+invalid-environment,inventory-api,classroom,v1.0.0,artifacts/inventory-api.txt,FAILED_VALIDATION
+missing-artifact,inventory-api,test,v1.0.1,artifacts/missing.txt,FAILED_PREFLIGHT
+empty-artifact,inventory-api,dev,v1.0.1,artifacts/empty.txt,FAILED_PREFLIGHT
+missing-fourth-argument,inventory-api,dev,v1.0.0,NOT_PROVIDED,FAILED_ARGUMENT_COUNT
+

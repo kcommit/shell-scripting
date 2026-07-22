@@ -1,0 +1,4 @@
+Inventory API version 1.0.0
+
+This is a safe sample artifact for the Bash arguments DevOps lab.
+

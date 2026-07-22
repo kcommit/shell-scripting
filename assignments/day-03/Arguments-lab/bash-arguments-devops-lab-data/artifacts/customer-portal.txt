@@ -1,0 +1,8 @@
+Application: Customer Portal
+Version: v2.1.0
+Owner: Web Platform Team
+Environment support: dev, test, prod
+Health endpoint: /portal/health
+Expected health status: 200
+Purpose: Artifact used to practise quoted application arguments
+

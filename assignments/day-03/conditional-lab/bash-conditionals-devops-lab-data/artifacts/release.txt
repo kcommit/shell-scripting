@@ -1,0 +1,3 @@
+This is a non-empty test file with the wrong artifact extension.
+The preflight condition should reject it because it does not end with .tar.gz.
+

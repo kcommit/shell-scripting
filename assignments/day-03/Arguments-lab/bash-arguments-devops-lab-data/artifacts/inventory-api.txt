@@ -1,0 +1,8 @@
+Application: Inventory API
+Version: v1.0.0
+Owner: Platform Engineering
+Environment support: dev, test, prod
+Health endpoint: /health
+Expected health status: 200
+Purpose: Primary artifact for the Bash Arguments DevOps Lab
+

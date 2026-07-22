@@ -1,0 +1,8 @@
+Application: Payments API
+Version: v3.0.0
+Owner: Payments Platform Team
+Environment support: dev, test, prod
+Health endpoint: /payments/health
+Expected health status: 200
+Purpose: Additional artifact for argument and deployment testing
+
