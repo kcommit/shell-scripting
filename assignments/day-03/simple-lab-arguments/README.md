@@ -1,4 +1,4 @@
-# Bash Arguments Lab — Baby-Steps Solution
+# Bash Arguments Lab 
 
 This solution matches the six-task beginner lab.
 

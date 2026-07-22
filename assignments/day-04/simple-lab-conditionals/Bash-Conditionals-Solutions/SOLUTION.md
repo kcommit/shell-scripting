@@ -1,4 +1,4 @@
-# Bash Conditionals Lab — Baby-Steps Solution
+# Bash Conditionals Lab 
 
 This solution matches the six-task beginner conditionals lab.
 

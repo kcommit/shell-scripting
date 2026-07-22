@@ -1,4 +1,4 @@
-# Bash Arguments Lab — Baby Steps
+# Bash Arguments Lab 
 
 ## Six simple tasks
 
