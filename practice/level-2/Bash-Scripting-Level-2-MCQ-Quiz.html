@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive 25-question Bash Level 2 guided automation quiz with timer, scoring, shuffled answers, and short explanations.">
+  <title>Bash Scripting Level 2 — 25 MCQ Quiz</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --panel: #101e31;
+      --panel-2: #162740;
+      --text: #ecf4ff;
+      --muted: #9eb0c8;
+      --accent: #4fd1c5;
+      --accent-2: #60a5fa;
+      --success: #34d399;
+      --danger: #fb7185;
+      --warning: #fbbf24;
+      --border: #29405f;
+      --shadow: 0 18px 50px rgb(0 0 0 / 28%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgb(37 99 235 / 18%), transparent 32rem),
+        radial-gradient(circle at top left, rgb(20 184 166 / 13%), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    button, input { font: inherit; }
+
+    .container {
+      width: min(980px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .hero, .toolbar, .question-card, .result-card, .notice {
+      background: rgb(16 30 49 / 94%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero { padding: 30px; }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-size: .76rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      line-height: 1.12;
+    }
+
+    .hero p { max-width: 780px; color: var(--muted); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 13px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+    }
+
+    .stat span { display: block; color: var(--muted); font-size: .78rem; }
+    .stat strong { font-size: 1.15rem; }
+
+    .toolbar {
+      position: sticky;
+      top: 10px;
+      z-index: 5;
+      margin: 18px 0;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-track {
+      height: 10px;
+      background: #081322;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .25s ease;
+    }
+
+    .toolbar-label { color: var(--muted); font-size: .82rem; margin-top: 5px; }
+    .timer { font-weight: 900; font-variant-numeric: tabular-nums; }
+
+    .notice {
+      display: none;
+      margin: 0 0 18px;
+      padding: 13px 17px;
+      color: var(--warning);
+      border-color: rgb(251 191 36 / 55%);
+      background: rgb(89 61 8 / 45%);
+      font-weight: 750;
+    }
+
+    .notice.show { display: block; }
+
+    .question-card {
+      padding: 22px;
+      margin-bottom: 16px;
+      scroll-margin-top: 108px;
+    }
+
+    .question-card.unanswered {
+      border-color: var(--warning);
+      box-shadow: 0 0 0 2px rgb(251 191 36 / 20%);
+    }
+
+    .question-card h2 { margin: 0 0 16px; font-size: 1.05rem; }
+    .question-number { color: var(--accent); margin-right: 6px; }
+
+    code {
+      padding: .12rem .36rem;
+      border-radius: 5px;
+      background: #081322;
+      color: #c8e7ff;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .options { display: grid; gap: 10px; }
+
+    .option {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 11px;
+      padding: 13px 14px;
+      border-radius: 12px;
+      background: #0b1829;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+
+    .option:hover { transform: translateY(-1px); border-color: var(--accent-2); }
+    .option:has(input:checked) { background: #12334b; border-color: var(--accent); }
+    .option.correct { background: rgb(16 90 68 / 45%); border-color: var(--success); }
+    .option.incorrect { background: rgb(120 28 52 / 40%); border-color: var(--danger); }
+    .option input { margin-top: 4px; accent-color: var(--accent); }
+
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 13px 15px;
+      border-left: 4px solid var(--accent-2);
+      border-radius: 8px;
+      background: #0a1728;
+      color: var(--muted);
+    }
+
+    .explanation.show { display: block; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .primary { color: #03131d; background: linear-gradient(135deg, var(--accent), #7dd3fc); }
+    .secondary { color: var(--text); background: var(--panel-2); border: 1px solid var(--border); }
+    .button:disabled { opacity: .5; cursor: not-allowed; }
+
+    .result-card {
+      display: none;
+      padding: 26px;
+      margin: 20px 0;
+      text-align: center;
+      scroll-margin-top: 105px;
+    }
+
+    .result-card.show { display: block; }
+    .score { font-size: clamp(2.4rem, 8vw, 4.8rem); font-weight: 950; color: var(--accent); }
+    .result-message, .result-meta { color: var(--muted); }
+    .result-meta { font-size: .93rem; }
+    .warning { color: var(--warning); font-weight: 750; }
+
+    footer { text-align: center; color: var(--muted); padding-top: 24px; }
+    footer a { color: var(--accent); }
+
+    @media (max-width: 700px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .toolbar { grid-template-columns: 1fr auto; }
+      .toolbar > div:first-child { grid-column: 1 / -1; }
+      .hero, .question-card { padding: 19px; }
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      .toolbar, .actions, .notice { display: none !important; }
+      .hero, .question-card, .result-card { box-shadow: none; border: 1px solid #bbb; background: white; }
+      .question-card { break-inside: avoid; }
+      .option, .explanation { background: white; color: black; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Bash Scripting Level 2 · Guided Automation</p>
+      <h1>25-Question MCQ Quiz</h1>
+      <p>Test argument validation, exit statuses, file checks, command chaining, local copying, timestamped backups, logs, preflight gates, processing, and controller flow. Questions and answer choices are shuffled on every attempt.</p>
+      <div class="stats">
+        <div class="stat"><span>Questions</span><strong>25</strong></div>
+        <div class="stat"><span>Time limit</span><strong>25 min</strong></div>
+        <div class="stat"><span>Passing score</span><strong>80%</strong></div>
+        <div class="stat"><span>Attempt</span><strong id="attemptNumber">1</strong></div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Quiz status">
+      <div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="toolbar-label" id="progressLabel">0 of 25 answered</div>
+      </div>
+      <div>Time: <span class="timer" id="timer">25:00</span></div>
+      <div id="statusLabel">In progress</div>
+    </section>
+
+    <div class="notice" id="unansweredNotice" role="alert"></div>
+    <form id="quizForm"></form>
+
+    <div class="actions">
+      <button class="button primary" id="submitButton" type="button">Submit Quiz</button>
+      <button class="button secondary" id="reattemptButton" type="button">Reattempt and Shuffle</button>
+    </div>
+
+    <section class="result-card" id="resultCard" aria-live="polite">
+      <p class="eyebrow">Your Result</p>
+      <div class="score" id="scoreText">0%</div>
+      <h2 id="scoreDetail"></h2>
+      <p class="result-message" id="resultMessage"></p>
+      <p class="result-meta" id="resultMeta"></p>
+    </section>
+
+    <footer>
+      <p>Prepared for Muhammad Khalid Khan · <a href="https://github.com/krmaryum">GitHub: krmaryum</a></p>
+    </footer>
+  </main>
+
+  <script>
+    const quizData = [
+          {
+                "q": "Which condition checks that exactly two arguments were not supplied?",
+                "options": [
+                      "[ \"$#\" -ne 2 ]",
+                      "[ \"$1\" -eq 2 ]",
+                      "[ \"$0\" -ne 2 ]",
+                      "[ \"$@\" = 2 ]"
+                ],
+                "answer": "[ \"$#\" -ne 2 ]",
+                "explanation": "$# contains the argument count, and -ne means numerically not equal."
+          },
+          {
+                "q": "Where should a usage error normally be sent?",
+                "options": [
+                      "Standard error",
+                      "Standard input",
+                      "A remote server",
+                      "The shebang line"
+                ],
+                "answer": "Standard error",
+                "explanation": "Usage and failure messages belong on stderr so they can be separated from normal output."
+          },
+          {
+                "q": "What does exit 0 normally mean?",
+                "options": [
+                      "The script succeeded",
+                      "The script failed",
+                      "The file is empty",
+                      "The argument is missing"
+                ],
+                "answer": "The script succeeded",
+                "explanation": "Unix tools normally use status 0 for success."
+          },
+          {
+                "q": "What does exit 1 normally communicate in this lab?",
+                "options": [
+                      "A failure or rejected check",
+                      "A successful copy",
+                      "One supplied argument",
+                      "The first line of a file"
+                ],
+                "answer": "A failure or rejected check",
+                "explanation": "A non-zero exit status communicates that the requested operation did not complete successfully."
+          },
+          {
+                "q": "What does $? contain immediately after a command runs?",
+                "options": [
+                      "The command's exit status",
+                      "The argument count",
+                      "The current user",
+                      "The script filename"
+                ],
+                "answer": "The command's exit status",
+                "explanation": "$? reports the status of the most recently completed command."
+          },
+          {
+                "q": "Which test checks whether a path is an existing regular file?",
+                "options": [
+                      "-f",
+                      "-s",
+                      "-z",
+                      "-ne"
+                ],
+                "answer": "-f",
+                "explanation": "-f is true when the path exists and is a regular file."
+          },
+          {
+                "q": "Which test checks whether a file exists and is not empty?",
+                "options": [
+                      "-s",
+                      "-f",
+                      "-z",
+                      "-d"
+                ],
+                "answer": "-s",
+                "explanation": "-s is true when the file has a size greater than zero."
+          },
+          {
+                "q": "Which test checks whether a string is empty?",
+                "options": [
+                      "-z",
+                      "-s",
+                      "-f",
+                      "-ge"
+                ],
+                "answer": "-z",
+                "explanation": "-z is true when the tested string has zero characters."
+          },
+          {
+                "q": "What does ! do in [ ! -f \"$file\" ]?",
+                "options": [
+                      "Reverses the test result",
+                      "Makes the file executable",
+                      "Appends to the file",
+                      "Counts the arguments"
+                ],
+                "answer": "Reverses the test result",
+                "explanation": "! negates the condition, so the expression is true when the regular file does not exist."
+          },
+          {
+                "q": "When does command2 run in command1 && command2?",
+                "options": [
+                      "After command1 succeeds",
+                      "After command1 fails",
+                      "Before command1",
+                      "Only as root"
+                ],
+                "answer": "After command1 succeeds",
+                "explanation": "&& continues to the next command only when the preceding command returns status 0."
+          },
+          {
+                "q": "When does command2 run in command1 || command2?",
+                "options": [
+                      "After command1 fails",
+                      "After command1 succeeds",
+                      "Before command1",
+                      "Only when two arguments exist"
+                ],
+                "answer": "After command1 fails",
+                "explanation": "|| runs its right-hand command when the left-hand command returns a non-zero status."
+          },
+          {
+                "q": "Why is mkdir -p useful in automation?",
+                "options": [
+                      "It creates needed parent directories and accepts an existing directory",
+                      "It deletes an old directory",
+                      "It prints the current directory",
+                      "It changes file ownership"
+                ],
+                "answer": "It creates needed parent directories and accepts an existing directory",
+                "explanation": "mkdir -p safely creates the requested path and does not fail merely because it already exists."
+          },
+          {
+                "q": "Which command copies homework.txt into the incoming directory?",
+                "options": [
+                      "cp \"homework.txt\" \"incoming/\"",
+                      "mv -d \"homework.txt\" \"incoming/\"",
+                      "echo \"homework.txt\" > \"incoming/\"",
+                      "mkdir \"homework.txt\" \"incoming/\""
+                ],
+                "answer": "cp \"homework.txt\" \"incoming/\"",
+                "explanation": "cp copies the source file into the destination directory while leaving the source in place."
+          },
+          {
+                "q": "What does basename \"data/homework-ali.txt\" return?",
+                "options": [
+                      "homework-ali.txt",
+                      "data",
+                      "data/homework-ali.txt",
+                      "/homework-ali.txt/data"
+                ],
+                "answer": "homework-ali.txt",
+                "explanation": "basename removes the directory portion and returns only the final filename."
+          },
+          {
+                "q": "Which command creates a timestamp such as 20260722-213650?",
+                "options": [
+                      "date +%Y%m%d-%H%M%S",
+                      "date +%F",
+                      "whoami",
+                      "basename date"
+                ],
+                "answer": "date +%Y%m%d-%H%M%S",
+                "explanation": "The format combines year, month, day, hour, minute, and second."
+          },
+          {
+                "q": "Which redirection appends a new record while preserving old log entries?",
+                "options": [
+                      ">>",
+                      ">",
+                      "<",
+                      "2<"
+                ],
+                "answer": ">>",
+                "explanation": ">> appends output to the end of a file instead of replacing its content."
+          },
+          {
+                "q": "What is the main difference between > and >>?",
+                "options": [
+                      "> overwrites; >> appends",
+                      "> appends; >> overwrites",
+                      "> handles errors only; >> handles input only",
+                      "There is no difference"
+                ],
+                "answer": "> overwrites; >> appends",
+                "explanation": "> creates or replaces output, while >> keeps old content and adds new output at the end."
+          },
+          {
+                "q": "Which command provides the current username for an audit record?",
+                "options": [
+                      "whoami",
+                      "pwd",
+                      "basename",
+                      "chmod"
+                ],
+                "answer": "whoami",
+                "explanation": "whoami prints the effective username running the script."
+          },
+          {
+                "q": "Why should \"$source_file\" be quoted in cp \"$source_file\" \"$destination/\"?",
+                "options": [
+                      "To preserve paths containing spaces",
+                      "To make cp run as root",
+                      "To convert the path to a number",
+                      "To create a timestamp"
+                ],
+                "answer": "To preserve paths containing spaces",
+                "explanation": "Quotes prevent word splitting and keep the complete path as one argument."
+          },
+          {
+                "q": "What happens when a script command is used directly after if?",
+                "options": [
+                      "Its exit status decides true or false",
+                      "Its text output becomes the argument count",
+                      "It always becomes true",
+                      "It runs only after fi"
+                ],
+                "answer": "Its exit status decides true or false",
+                "explanation": "An exit status of 0 is true in if; a non-zero status is false."
+          },
+          {
+                "q": "What does [[ \"$student_name\" == */* ]] detect?",
+                "options": [
+                      "A slash anywhere in the student name",
+                      "An empty homework file",
+                      "Exactly two arguments",
+                      "A successful copy"
+                ],
+                "answer": "A slash anywhere in the student name",
+                "explanation": "Inside [[ ]], the * characters act as patterns around the slash."
+          },
+          {
+                "q": "Why should preflight run before copying a submission?",
+                "options": [
+                      "To reject invalid input before making changes",
+                      "To delete the source file",
+                      "To bypass file checks",
+                      "To force every result to succeed"
+                ],
+                "answer": "To reject invalid input before making changes",
+                "explanation": "Preflight protects the processing step from missing, empty, or unsafe input."
+          },
+          {
+                "q": "What is the purpose of a submission audit log?",
+                "options": [
+                      "Record who processed what, when, and with which result",
+                      "Store the Bash interpreter",
+                      "Replace the homework file",
+                      "Grant executable permission"
+                ],
+                "answer": "Record who processed what, when, and with which result",
+                "explanation": "An audit log provides a history of successful and failed attempts for review and troubleshooting."
+          },
+          {
+                "q": "What does bash -n 09-submission-controller.sh verify?",
+                "options": [
+                      "Bash syntax",
+                      "Remote connectivity",
+                      "File ownership",
+                      "The quiz score"
+                ],
+                "answer": "Bash syntax",
+                "explanation": "bash -n parses the script without running its normal commands."
+          },
+          {
+                "q": "What is the correct order of the connected Level 2 project?",
+                "options": [
+                      "Preflight, processor, controller",
+                      "Controller, preflight, processor",
+                      "Processor, controller, preflight",
+                      "Audit log, chmod, shebang"
+                ],
+                "answer": "Preflight, processor, controller",
+                "explanation": "The preflight validates input, the processor copies approved work, and the controller records the final result."
+          }
+    ];
+
+    const TOTAL_SECONDS = 25 * 60;
+    const state = {
+      questions: [],
+      secondsRemaining: TOTAL_SECONDS,
+      timerId: null,
+      submitted: false,
+      attempt: 0
+    };
+
+    const quizForm = document.getElementById("quizForm");
+    const progressBar = document.getElementById("progressBar");
+    const progressLabel = document.getElementById("progressLabel");
+    const timerElement = document.getElementById("timer");
+    const statusLabel = document.getElementById("statusLabel");
+    const attemptNumber = document.getElementById("attemptNumber");
+    const submitButton = document.getElementById("submitButton");
+    const reattemptButton = document.getElementById("reattemptButton");
+    const unansweredNotice = document.getElementById("unansweredNotice");
+    const resultCard = document.getElementById("resultCard");
+    const scoreText = document.getElementById("scoreText");
+    const scoreDetail = document.getElementById("scoreDetail");
+    const resultMessage = document.getElementById("resultMessage");
+    const resultMeta = document.getElementById("resultMeta");
+
+    function shuffle(items) {
+      const result = [...items];
+      for (let index = result.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+      }
+      return result;
+    }
+
+    function getBestScore() {
+      try {
+        return Number(localStorage.getItem("bashLevel2BestScore") || 0);
+      } catch (error) {
+        return 0;
+      }
+    }
+
+    function saveBestScore(score) {
+      try {
+        const best = Math.max(getBestScore(), score);
+        localStorage.setItem("bashLevel2BestScore", String(best));
+        return best;
+      } catch (error) {
+        return score;
+      }
+    }
+
+    function createAttempt() {
+      clearInterval(state.timerId);
+      state.attempt += 1;
+      state.questions = shuffle(quizData).map((question) => ({
+        ...question,
+        options: shuffle(question.options)
+      }));
+      state.secondsRemaining = TOTAL_SECONDS;
+      state.submitted = false;
+      attemptNumber.textContent = String(state.attempt);
+      resultCard.classList.remove("show");
+      unansweredNotice.classList.remove("show");
+      submitButton.disabled = false;
+      statusLabel.textContent = "In progress";
+      renderQuestions();
+      updateProgress();
+      updateTimer();
+      state.timerId = setInterval(tick, 1000);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuestions() {
+      quizForm.innerHTML = "";
+      state.questions.forEach((question, questionIndex) => {
+        const card = document.createElement("section");
+        card.className = "question-card";
+        card.dataset.questionIndex = String(questionIndex);
+
+        const heading = document.createElement("h2");
+        const number = document.createElement("span");
+        number.className = "question-number";
+        number.textContent = `${questionIndex + 1}.`;
+        heading.append(number, document.createTextNode(` ${question.q}`));
+
+        const options = document.createElement("div");
+        options.className = "options";
+
+        question.options.forEach((optionText, optionIndex) => {
+          const label = document.createElement("label");
+          label.className = "option";
+          label.dataset.option = optionText;
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `question-${questionIndex}`;
+          input.value = optionText;
+          input.id = `question-${questionIndex}-option-${optionIndex}`;
+          input.addEventListener("change", () => {
+            card.classList.remove("unanswered");
+            updateProgress();
+          });
+
+          const text = document.createElement("span");
+          text.textContent = optionText;
+          label.append(input, text);
+          options.append(label);
+        });
+
+        const explanation = document.createElement("div");
+        explanation.className = "explanation";
+        explanation.textContent = question.explanation;
+
+        card.append(heading, options, explanation);
+        quizForm.append(card);
+      });
+    }
+
+    function updateProgress() {
+      const answered = quizForm.querySelectorAll('input[type="radio"]:checked').length;
+      const percentage = (answered / state.questions.length) * 100;
+      progressBar.style.width = `${percentage}%`;
+      progressLabel.textContent = `${answered} of ${state.questions.length} answered`;
+
+      if (answered === state.questions.length) {
+        unansweredNotice.classList.remove("show");
+        statusLabel.textContent = "Ready to submit";
+      } else if (!state.submitted) {
+        statusLabel.textContent = "In progress";
+      }
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(state.secondsRemaining / 60);
+      const seconds = state.secondsRemaining % 60;
+      timerElement.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      timerElement.classList.toggle("warning", state.secondsRemaining <= 300);
+    }
+
+    function tick() {
+      if (state.secondsRemaining > 0) {
+        state.secondsRemaining -= 1;
+        updateTimer();
+      }
+      if (state.secondsRemaining === 0) {
+        clearInterval(state.timerId);
+        submitQuiz(true);
+      }
+    }
+
+    function findUnansweredCards() {
+      return [...quizForm.querySelectorAll(".question-card")].filter(
+        (card) => !card.querySelector('input[type="radio"]:checked')
+      );
+    }
+
+    function submitQuiz(autoSubmitted = false) {
+      if (state.submitted) return;
+
+      const unansweredCards = findUnansweredCards();
+      if (!autoSubmitted && unansweredCards.length > 0) {
+        quizForm.querySelectorAll(".question-card").forEach((card) => card.classList.remove("unanswered"));
+        unansweredCards.forEach((card) => card.classList.add("unanswered"));
+        unansweredNotice.textContent = `Please answer all questions. ${unansweredCards.length} question${unansweredCards.length === 1 ? " is" : "s are"} still unanswered.`;
+        unansweredNotice.classList.add("show");
+        statusLabel.textContent = `${unansweredCards.length} unanswered`;
+        unansweredCards[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      state.submitted = true;
+      clearInterval(state.timerId);
+      unansweredNotice.classList.remove("show");
+
+      let correct = 0;
+      state.questions.forEach((question, questionIndex) => {
+        const card = quizForm.querySelector(`[data-question-index="${questionIndex}"]`);
+        const selected = card.querySelector('input[type="radio"]:checked');
+        const labels = card.querySelectorAll(".option");
+
+        labels.forEach((label) => {
+          const option = label.dataset.option;
+          if (option === question.answer) label.classList.add("correct");
+          if (selected && option === selected.value && selected.value !== question.answer) {
+            label.classList.add("incorrect");
+          }
+        });
+
+        if (selected && selected.value === question.answer) correct += 1;
+        card.querySelectorAll("input").forEach((input) => { input.disabled = true; });
+        card.querySelector(".explanation").classList.add("show");
+      });
+
+      const percentage = Math.round((correct / state.questions.length) * 100);
+      const bestScore = saveBestScore(percentage);
+      const secondsUsed = TOTAL_SECONDS - state.secondsRemaining;
+      const usedMinutes = Math.floor(secondsUsed / 60);
+      const usedSeconds = secondsUsed % 60;
+
+      scoreText.textContent = `${percentage}%`;
+      scoreDetail.textContent = `${correct} of ${state.questions.length} correct`;
+
+      if (percentage >= 90) {
+        resultMessage.textContent = "Excellent. You have a strong understanding of the Bash foundation topics.";
+      } else if (percentage >= 80) {
+        resultMessage.textContent = "Passed. Review the missed explanations and practise those scripts again.";
+      } else if (percentage >= 60) {
+        resultMessage.textContent = "Good effort. Revisit the related baby-step scripts before reattempting.";
+      } else {
+        resultMessage.textContent = "Foundation review is recommended. Practise one topic at a time and try again.";
+      }
+
+      resultMeta.textContent = `Attempt ${state.attempt} · Time used ${String(usedMinutes).padStart(2, "0")}:${String(usedSeconds).padStart(2, "0")} · Best score ${bestScore}%`;
+      submitButton.disabled = true;
+      statusLabel.textContent = autoSubmitted ? "Time expired" : "Submitted";
+      resultCard.classList.add("show");
+      resultCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    submitButton.addEventListener("click", () => submitQuiz(false));
+    reattemptButton.addEventListener("click", createAttempt);
+    createAttempt();
+  </script>
+</body>
+</html>
