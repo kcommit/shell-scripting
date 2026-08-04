@@ -125,6 +125,8 @@ Quoted `"${fruits[@]}"` expands every array item separately and safely.
 | `[@]`    | Select all array elements     |
 | `" "`    | Preserve each element exactly |
 
+[More Details Click Here in roman Urdu](./md/Bash-Array-At-Symbol-Roman-Urdu-Study-Notes.md)
+
 [More Details Click Here](./md/Bash-Array-At-Symbol-Study-Notes.md)
 
 ### Increase the item number
