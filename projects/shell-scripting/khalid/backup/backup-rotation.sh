@@ -91,7 +91,7 @@ fi
 # Create Backup Directory
 # -----------------------------
 
-if ! mkdir -p -- "$backup_folder"; then
+if ! mkdir -p "$backup_folder"; then
     die "Could not create backup folder '$backup_folder'."
 fi
 

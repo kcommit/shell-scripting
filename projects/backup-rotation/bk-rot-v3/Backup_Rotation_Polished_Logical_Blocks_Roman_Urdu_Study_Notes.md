@@ -119,7 +119,7 @@ function create_backup {
 
     if (
         cd -- "$source_parent" &&
-        zip -rq -- "$backup_file" "$source_name"
+        zip -rq "$backup_file" "$source_name"
     ); then
         echo "Backup created successfully:"
         echo "$backup_file"
@@ -715,7 +715,7 @@ Ye troubleshooting mein helpful hai.
 ```bash
 if (
     cd -- "$source_parent" &&
-    zip -rq -- "$backup_file" "$source_name"
+    zip -rq "$backup_file" "$source_name"
 ); then
 ```
 
@@ -739,7 +739,7 @@ Main script ki working directory permanently change nahi hoti.
 
 ```bash
 cd -- "$source_parent" &&
-zip -rq -- "$backup_file" "$source_name"
+zip -rq "$backup_file" "$source_name"
 ```
 
 ### `&&`

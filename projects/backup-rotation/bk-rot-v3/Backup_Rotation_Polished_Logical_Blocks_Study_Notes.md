@@ -117,7 +117,7 @@ function create_backup {
 
     if (
         cd -- "$source_parent" &&
-        zip -rq -- "$backup_file" "$source_name"
+        zip -rq "$backup_file" "$source_name"
     ); then
         echo "Backup created successfully:"
         echo "$backup_file"
@@ -615,7 +615,7 @@ so it is easy to see exactly what is happening.
 ```bash
 if (
     cd -- "$source_parent" &&
-    zip -rq -- "$backup_file" "$source_name"
+    zip -rq "$backup_file" "$source_name"
 ); then
 ```
 
@@ -688,7 +688,7 @@ instead of storing an unnecessarily long path.
 # Logical Block 18 — ZIP Options
 
 ```bash
-zip -rq -- "$backup_file" "$source_name"
+zip -rq  "$backup_file" "$source_name"
 ```
 
 `-r` = recursive.

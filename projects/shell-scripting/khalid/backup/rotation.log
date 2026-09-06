@@ -1,0 +1,27 @@
+Usage: /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh <source> <backup-folder> [number-to-keep]
+
+Examples:
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups 10
+Usage: /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh <source> <backup-folder> [number-to-keep]
+
+Examples:
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups 10
+Usage: /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh <source> <backup-folder> [number-to-keep]
+
+Examples:
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups 10
+Usage: /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh <source> <backup-folder> [number-to-keep]
+
+Examples:
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups 10
+Usage: /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh <source> <backup-folder> [number-to-keep]
+
+Examples:
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups
+  /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh data backups 10
+Error: Source 'data' does not exist.
+Error: Source 'data' does not exist.

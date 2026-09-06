@@ -1,0 +1,310 @@
+Script started on 2026-07-30 06:16:43-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="125" LINES="39"]
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ sudo lsof +L1[K[Kbash [7mglobal-variable-scope.sh[27mglobal-variable-scope.sh
+[?2004lLocal
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ bash global-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.shcglobal-variable-scope.shaglobal-variable-scope.shtglobal-variable-scope.sh global-variable-scope.sh
+[?2004l#!/bin/bash
+
+# Func-variable
+
+name="Global"
+
+change_name()
+{
+	name="Local"
+}
+
+change_name
+echo "$name"
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat global-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.shvglobal-variable-scope.shiglobal-variable-scope.shmglobal-variable-scope.sh global-variable-scope.sh
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;39r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[39;1H"global-variable-scope.sh" 13L, 103B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[38;5;130m  1 [m[34m#!/bin/bash[m
+[38;5;130m  2 [m[2;5H[K[3;1H[38;5;130m  3 [m[34m# Func-variable[m[3;20H[K[4;1H[38;5;130m  4 
+  5 [m[36mname[m=[38;5;130m"[m[31mGlobal[m[38;5;130m"
+  6 
+  7 [m[36mchange_name()[m
+[38;5;130m  8 [m[36m{[m
+[38;5;130m  9 [m[8C[36mname[m=[38;5;130m"[m[31mLocal[m[38;5;130m"
+ 10 [m[36m}[m
+[38;5;130m 11 
+ 12 [mchange_name
+[38;5;130m 13 echo[m[31m [m[38;5;130m"[m[35m$name[m[38;5;130m"[m
+[94m~                                                                                                                            [15;1H~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [m[39;108H1,1[11CAll[1;5H[?25h[?4m[?12$p[27m[23m[29m[m[H[2J[?25l[1;1H[93m  1 [m[96m#!/bin/bash[m
+[93m  2 
+  3 [m[96m# Func-variable[m
+[93m  4 
+  5 [m[1m[96mname[m=[93m"[m[95mGlobal[m[93m"[m
+[93m  6 
+  7 [m[1m[96mchange_name()[m
+[93m  8 [m[1m[96m{[m
+[93m  9 [m[8C[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m
+[93m 10 [m[1m[96m}[m
+[93m 11 
+ 12 [mchange_name
+[93m 13 [m[93mecho[m[95m [m[93m"[m[38;5;81m$name[m[93m"[m
+[94m~                                                                                                                            [15;1H~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [m[39;108H1,1[11CAll"global-variable-scope.sh" 13L, 103B[1;5H[?25h[?25l[39;1H[1m-- INSERT --[m[39;13H[K[39;108H1,1[11CAll[1;5H[?25h[?25l[39;108H2[2;5H[?25h[?25l[39;108H3[3;5H[?25h[?25l[39;108H4[4;5H[?25h[?25l[39;108H5[5;5H[?25h[?25l[39;108H6[6;5H[?25h[?25l[39;108H7[7;5H[?25h[?25l[8;5H[1m[96m[46m{[10;5H}[m[39;108H8[8;5H[?25h[?25l[1m[96m{[10;5H}[m[39;108H9[9;5H[?25h[?25l[39;110H2-9[9;13H[?25h[?25l[1m[96mlname[m=[93m"[m[95mLocal[m[93m"[m[39;110H3-10[9;14H[?25h[?25l[1m[96moname[m=[93m"[m[95mLocal[m[93m"[m[39;110H4-11[9;15H[?25h[?25l[1m[96mcname[m=[93m"[m[95mLocal[m[93m"[m[39;110H5-12[9;16H[?25h[?25l[1m[96maname[m=[93m"[m[95mLocal[m[93m"[m[39;110H6-13[9;17H[?25h[?25l[1m[96mlname[m=[93m"[m[95mLocal[m[93m"[m[39;110H7-14[9;18H[?25h[?25l[93mlocal[m[1m[96m name[m[93m="[m[95mLocal[m[93m"[m[39;110H8-15[9;19H[?25h[?25l[39;110H9-16[9;20H[?25h[?25l[39;110H10-17[9;21H[?25h[?25l[39;111H1-18[9;22H[?25h[?25l[39;111H2-19[9;23H[?25h[?25l[39;111H3-20[9;24H[?25h[?25l[39;111H4-21[9;25H[?25h[?25l[39;111H5-22[9;26H[?25h[?25l[39;111H6-23[9;27H[?25h[?25l[39;111H7-24[9;28H[?25h[?25l[39;111H8-25[9;29H[?25h[?25l[39;111H9-26[9;30H[?25h[?25l[39;110H20-27[9;31H[?25h[?25l[10;5H  [11;5H[1m[96m}[m[12;5H[K[13;5Hchange_name[13;16H[K[14;1H[93m 14 [m[93mecho[m[95m [m[93m"[m[38;5;81m$name[m[93m"[m[14;17H[K[39;108H10,2-9 [10;13H[?25h[?25le[39;111H3-10[10;14H[?25h[?25lc[39;111H4-11[10;15H[?25h[?25lh[39;111H5-12[10;16H[?25h[?25l[93mecho[m[39;111H6-13[10;17H[?25h[?25l[95m [m[39;111H7-14[10;18H[?25h[?25l[93m"[m[11;5H[95m}[13;5Hchange_name[14;5Hecho[m[39;111H8-15[10;19H[?25h[?25l[93m"[m[11;5H[1m[96m}[m[13;5Hchange_name[14;5H[93mecho[m[39;111H9-16[10;20H[?25h[?25l[39;111H8-15[10;19H[?25h[?25l[95mI[m[93m"[m[39;111H9-16[10;20H[?25h[?25l[95mn[m[93m"[m[39;111H10-17[10;21H[?25h[?25l[95ms[m[93m"[m[39;112H1-18[10;22H[?25h[?25l[95mi[m[93m"[m[39;112H2-19[10;23H[?25h[?25l[95md[m[93m"[m[39;112H3-20[10;24H[?25h[?25l[95me[m[93m"[m[39;112H4-21[10;25H[?25h[?25l[95m:[m[93m"[m[39;112H5-22[10;26H[?25h[?25l[95m [m[93m"[m[39;112H6-23[10;27H[?25h[?25l[95m$[m[93m"[m[39;112H7-24[10;28H[?25h[?25l[38;5;81m$n[m[93m"[m[39;112H8-25[10;29H[?25h[?25l[38;5;81ma[m[93m"[m[39;112H9-26[10;30H[?25h[?25l[38;5;81mm[m[93m"[m[39;111H20-27[10;31H[?25h[?25l[38;5;81me[m[93m"[m[39;112H1-28[10;32H[?25h[?25l[39;108H9,20-27 [9;31H[?25h[?25l[39;110H19-26[9;30H[?25h[?25l[39;111H8-25[9;29H[?25h[?25l[39;111H7-24[9;28H[?25h[?25l[39;111H6-23[9;27H[?25h[?25l[39;111H5-22[9;26H[?25h[?25l[39;111H4-21[9;25H[?25h[?25l[39;111H3-20[9;24H[?25h[?25l[39;111H2-19[9;23H[?25h[?25l[39;111H1-18[9;22H[?25h[?25l[39;111H0-17[9;21H[?25h[?25l[39;110H9-16 [9;20H[?25h[?25l[39;110H8-15[9;19H[?25h[?25l[1m[96mlocalname[m=[93m"[m[95mLocal[m[93m"[m[9;30H[K[39;110H7-14[9;18H[?25h[?25l[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m[9;29H[K[39;110H6-13[9;17H[?25h[?25l[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m[9;28H[K[39;110H5-12[9;16H[?25h[?25l[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m[9;27H[K[39;110H4-11[9;15H[?25h[?25l[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m[9;26H[K[39;110H3-10[9;14H[?25h[?25l[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m[9;25H[K[39;110H2-9 [9;13H[?25h[39;1H[K[9;12H[?25l[39;108H9,1-8[9CAll[9;12H[?25h[?25l[39;108H[K[39;1H:[?25hx[?25l[?2004l[>4;m"global-variable-scope.sh" 14L, 125B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ vim global-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.shcglobal-variable-scope.shaglobal-variable-scope.shtglobal-variable-scope.sh global-variable-scope.sh
+[?2004l#!/bin/bash
+
+# Func-variable
+
+name="Global"
+
+change_name()
+{
+	name="Local"
+	echo "Inside: $name"
+}
+
+change_name
+echo "$name"
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ [H[2J]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat global-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.shbglobal-variable-scope.shaglobal-variable-scope.shsglobal-variable-scope.shhglobal-variable-scope.sh global-variable-scope.sh
+[?2004lInside: Local
+Local
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ bash global-variable-scope.sh[1Pcat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l#!/bin/bash
+
+# Func-variable
+
+name="Global"
+
+change_name()
+{
+	name="Local"
+	echo "Inside: $name"
+}
+
+change_name
+echo "$name"
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat global-variable-scope.sh[1@bash[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pcat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P global-variable-scope.sh[1P global-variable-scope.sh[1P global-variable-scope.shv global-variable-scope.shi global-variable-scope.shm global-variable-scope.sh
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;39r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[39;1H"global-variable-scope.sh" 14L, 125B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[38;5;130m  1 [m[34m#!/bin/bash[m
+[38;5;130m  2 [m[2;5H[K[3;1H[38;5;130m  3 [m[34m# Func-variable[m[3;20H[K[4;1H[38;5;130m  4 
+  5 [m[36mname[m=[38;5;130m"[m[31mGlobal[m[38;5;130m"
+  6 
+  7 [m[36mchange_name()[m
+[38;5;130m  8 [m[36m{[m
+[38;5;130m  9 [m[8C[36mname[m=[38;5;130m"[m[31mLocal[m[38;5;130m"
+ 10 [8Cecho[m[31m [m[38;5;130m"[m[31mInside: [m[35m$name[m[38;5;130m"
+ 11 [m[36m}[m
+[38;5;130m 12 
+ 13 [mchange_name
+[38;5;130m 14 echo[m[31m [m[38;5;130m"[m[35m$name[m[38;5;130m"[m
+[94m~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [m[39;108H1,1[11CAll[1;5H[?25h[?4m[?12$p[27m[23m[29m[m[H[2J[?25l[1;1H[93m  1 [m[96m#!/bin/bash[m
+[93m  2 
+  3 [m[96m# Func-variable[m
+[93m  4 
+  5 [m[1m[96mname[m=[93m"[m[95mGlobal[m[93m"[m
+[93m  6 
+  7 [m[1m[96mchange_name()[m
+[93m  8 [m[1m[96m{[m
+[93m  9 [m[8C[1m[96mname[m=[93m"[m[95mLocal[m[93m"[m
+[93m 10 [m[8C[93mecho[m[95m [m[93m"[m[95mInside: [m[38;5;81m$name[m[93m"[m
+[93m 11 [m[1m[96m}[m
+[93m 12 
+ 13 [mchange_name
+[93m 14 [m[93mecho[m[95m [m[93m"[m[38;5;81m$name[m[93m"[m
+[94m~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [m[39;108H1,1[11CAll"global-variable-scope.sh" 14L, 125B[1;5H[?25h[?25l[39;1H[1m-- INSERT --[m[39;13H[K[39;108H1,1[11CAll[1;5H[?25h[?25l[39;108H2[2;5H[?25h[?25l[39;108H3[3;5H[?25h[?25l[39;108H4[4;5H[?25h[?25l[39;108H5[5;5H[?25h[?25l[39;108H6[6;5H[?25h[?25l[39;108H7[7;5H[?25h[?25l[8;5H[1m[96m[46m{[11;5H}[m[39;108H8[8;5H[?25h[?25l[1m[96m{[11;5H}[m[39;108H9[9;5H[?25h[?25l[39;110H2-9[9;13H[?25h[?25l[39;110H3-10[9;14H[?25h[?25l[39;110H4-11[9;15H[?25h[?25l[39;110H3-10[9;14H[?25h[?25l[39;110H2-9 [9;13H[?25h[?25l[1m[96mlname[m=[93m"[m[95mLocal[m[93m"[m[39;110H3-10[9;14H[?25h[?25l[1m[96moname[m=[93m"[m[95mLocal[m[93m"[m[39;110H4-11[9;15H[?25h[?25l[1m[96mcname[m=[93m"[m[95mLocal[m[93m"[m[39;110H5-12[9;16H[?25h[?25l[1m[96maname[m=[93m"[m[95mLocal[m[93m"[m[39;110H6-13[9;17H[?25h[?25l[1m[96mlname[m=[93m"[m[95mLocal[m[93m"[m[39;110H7-14[9;18H[?25h[?25l[93mlocal[m[1m[96m name[m[93m="[m[95mLocal[m[93m"[m[39;110H8-15[9;19H[?25h[39;1H[K[9;18H[?25l[39;108H9,7-14[8CAll[9;18H[?25h[?25l[39;108H[K[39;1H:[?25hx[?25l[?2004l[>4;m"global-variable-scope.sh" 14L, 131B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ vim global-variable-scope.sh[Kvim global-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.shcglobal-variable-scope.shaglobal-variable-scope.shtglobal-variable-scope.sh global-variable-scope.sh
+[?2004l#!/bin/bash
+
+# Func-variable
+
+name="Global"
+
+change_name()
+{
+	local name="Local"
+	echo "Inside: $name"
+}
+
+change_name
+echo "$name"
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ [H[2J]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat global-variable-scope.sh
+[?2004l#!/bin/bash
+
+# Func-variable
+
+name="Global"
+
+change_name()
+{
+	local name="Local"
+	echo "Inside: $name"
+}
+
+change_name
+echo "$name"
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat global-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.sh[1Pglobal-variable-scope.shbglobal-variable-scope.shaglobal-variable-scope.shsglobal-variable-scope.shhglobal-variable-scope.sh global-variable-scope.sh
+[?2004lInside: Local
+Global
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ [H[2J]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cd [K[K[Kls
+[?2004l01-func-date.sh  [0m[01;32m02_traffic_light.sh[0m  [01;32mcreate_user.sh[0m  error.txt                 greet-func.sh  multiplication-2-table.sh
+[01;32m01_for_loop.sh[0m   abc.txt              day-07.txt      for_dir.sh                [01;32mhello.sh[0m       multiplication_table.sh
+[01;32m01_weather.sh[0m    [01;32marg.sh[0m               day-5.txt       global-variable-scope.sh  [01;34mkhalid[0m         [01;32muser-identity[0m
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cd khalid/
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ [H[2J]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ cd ..
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls
+[?2004l01-func-date.sh  [0m[01;32m02_traffic_light.sh[0m  [01;32mcreate_user.sh[0m  error.txt                 greet-func.sh  multiplication-2-table.sh
+[01;32m01_for_loop.sh[0m   abc.txt              day-07.txt      for_dir.sh                [01;32mhello.sh[0m       multiplication_table.sh
+[01;32m01_weather.sh[0m    [01;32marg.sh[0m               day-5.txt       global-variable-scope.sh  [01;34mkhalid[0m         [01;32muser-identity[0m
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cd khalid/
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ echo $?
+[?2004l0
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting/khalid[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting/khalid[00m$ cd ..
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls
+[?2004l01-func-date.sh  [0m[01;32m02_traffic_light.sh[0m  [01;32mcreate_user.sh[0m  error.txt                 greet-func.sh  multiplication-2-table.sh
+[01;32m01_for_loop.sh[0m   abc.txt              day-07.txt      for_dir.sh                [01;32mhello.sh[0m       multiplication_table.sh
+[01;32m01_weather.sh[0m    [01;32marg.sh[0m               day-5.txt       global-variable-scope.sh  [01;34mkhalid[0m         [01;32muser-identity[0m
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cd missing-dic[Kr
+[?2004lbash: cd: missing-dir: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cd missing-dirls[Kcd ..[3Plscd missing-dir[Kecho $?
+[?2004l1
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat xyz.txt
+[?2004lcat: xyz.txt: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls
+[?2004l01-func-date.sh  [0m[01;32m02_traffic_light.sh[0m  [01;32mcreate_user.sh[0m  error.txt                 greet-func.sh  multiplication-2-table.sh
+[01;32m01_for_loop.sh[0m   abc.txt              day-07.txt      for_dir.sh                [01;32mhello.sh[0m       multiplication_table.sh
+[01;32m01_weather.sh[0m    [01;32marg.sh[0m               day-5.txt       global-variable-scope.sh  [01;34mkhalid[0m         [01;32muser-identity[0m
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls > abc.t[Klog
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls > abc.log[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[Kcat abc.log 
+[?2004l01-func-date.sh
+01_for_loop.sh
+01_weather.sh
+02_traffic_light.sh
+abc.log
+abc.txt
+arg.sh
+create_user.sh
+day-07.txt
+day-5.txt
+error.txt
+for_dir.sh
+global-variable-scope.sh
+greet-func.sh
+hello.sh
+khalid
+multiplication-2-table.sh
+multiplication_table.sh
+user-identity
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls >> abc.log 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls >> abc.log [2Pcat[C[C[C[C[C[C[C[C[C
+[?2004l01-func-date.sh
+01_for_loop.sh
+01_weather.sh
+02_traffic_light.sh
+abc.log
+abc.txt
+arg.sh
+create_user.sh
+day-07.txt
+day-5.txt
+error.txt
+for_dir.sh
+global-variable-scope.sh
+greet-func.sh
+hello.sh
+khalid
+multiplication-2-table.sh
+multiplication_table.sh
+user-identity
+01-func-date.sh
+01_for_loop.sh
+01_weather.sh
+02_traffic_light.sh
+abc.log
+abc.txt
+arg.sh
+create_user.sh
+day-07.txt
+day-5.txt
+error.txt
+for_dir.sh
+global-variable-scope.sh
+greet-func.sh
+hello.sh
+khalid
+multiplication-2-table.sh
+multiplication_table.sh
+user-identity
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls -l abc.log 
+[?2004l-rw-r--r-- 1 khalid khalid 528 Jul 30 06:41 abc.log
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls -l abc.log [2Pcat[C[C[C[C[C[C[C[C[C[2@ls >>[C[C[C[C[C[C[C[C[C[2Pcat[C[C[C[C[C[C[C[C[Cls > abc.log
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls > abc.log-l abc.log 
+[?2004l-rw-r--r-- 1 khalid khalid 264 Jul 30 06:43 abc.log
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls -l abc.log [2P> abc.log-l abc.log [2Pcat[C[C[C[C[C[C[C[C[C
+[?2004l01-func-date.sh
+01_for_loop.sh
+01_weather.sh
+02_traffic_light.sh
+abc.log
+abc.txt
+arg.sh
+create_user.sh
+day-07.txt
+day-5.txt
+error.txt
+for_dir.sh
+global-variable-scope.sh
+greet-func.sh
+hello.sh
+khalid
+multiplication-2-table.sh
+multiplication_table.sh
+user-identity
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ [H[2J]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ 2> file-namw[Ke[K[K[K[K[K[K[K[K[K[K[K[Kcat[K[K[Klss [K[K [K[K[Kcd missing
+[?2004lbash: cd: missing: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cd missing 2> error.log
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cst[K[Kat error.log
+[?2004lbash: cd: missing: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat error.log[10@d missing 2>[C[C[C[C[C[C[C[C[C[C> error.log
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat [K[K[K[Kls
+[?2004l01-func-date.sh      abc.log         day-07.txt  for_dir.sh                [0m[01;34mkhalid[0m
+[01;32m01_for_loop.sh[0m       abc.txt         day-5.txt   global-variable-scope.sh  multiplication-2-table.sh
+[01;32m01_weather.sh[0m        [01;32marg.sh[0m          error.log   greet-func.sh             multiplication_table.sh
+[01;32m02_traffic_light.sh[0m  [01;32mcreate_user.sh[0m  error.txt   [01;32mhello.sh[0m                  [01;32muser-identity[0m
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat abc > [C[1@.[1@l[1@o[1@g[C[C[C c o m b i n e d . l o g [C 2 > & 1 
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat abc.log > combined.log 2>&1 [C[C[C[C[C[C[C[C[C[C[1P [1P [1P [1P [1P[1@&[1@>
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat combined.log 
+[?2004l01-func-date.sh
+01_for_loop.sh
+01_weather.sh
+02_traffic_light.sh
+abc.log
+abc.txt
+arg.sh
+create_user.sh
+day-07.txt
+day-5.txt
+error.txt
+for_dir.sh
+global-variable-scope.sh
+greet-func.sh
+hello.sh
+khalid
+multiplication-2-table.sh
+multiplication_table.sh
+user-identity
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat combined.log [12@abc.log &> combined.log [C[1@1
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat abc1.log &> combined.log  [13Pcombined.log[C
+[?2004lcat: abc1.log: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat combined.log 
+[?2004lcat: abc1.log: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat combined.log [13@abc1.log &> combined.log [C[13Pcombined.log[C[12@abc.log &> combined.log [C[3@> combined.log 2>&1[C[1@1
+[?2004l[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ cat abc1.log > combined.log 2>&1 [16Pcombined.log[C
+[?2004lcat: abc1.log: No such file or directory
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls
+[?2004l01-func-date.sh      abc.log       [0m[01;32mcreate_user.sh[0m  error.txt                 [01;32mhello.sh[0m                   [01;32muser-identity[0m
+[01;32m01_for_loop.sh[0m       abc.txt       day-07.txt      for_dir.sh                [01;34mkhalid[0m
+[01;32m01_weather.sh[0m        [01;32marg.sh[0m        day-5.txt       global-variable-scope.sh  multiplication-2-table.sh
+[01;32m02_traffic_light.sh[0m  combined.log  error.log       greet-func.sh             multiplication_table.sh
+[?2004h]0;khalid@Khalid-laptop: ~/nit/shell-scripting[01;32mkhalid@Khalid-laptop[00m:[01;34m~/nit/shell-scripting[00m$ ls[K[Kexit
+[?2004lexit
+
+Script done on 2026-07-30 07:40:35-05:00 [COMMAND_EXIT_CODE="0"]

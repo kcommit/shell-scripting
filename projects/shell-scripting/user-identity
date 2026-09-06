@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# This is about user identity
+
+
+echo "User identity"
+date +%F
+whoami
+hostname
+pwd
+
+
