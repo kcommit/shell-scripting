@@ -1,0 +1,1 @@
+* * * * * /home/khalid/nit/shell-scripting/khalid/backup/backup-rotation.sh /home/khalid/nit/shell-scripting/khalid/backup/data /home/khalid/nit/shell-scripting/khalid/backup/backups > /home/khalid/nit/shell-scripting/khalid/backup/abc.log 2>&1
